@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C7B8B85279DFAD300E764C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B8B84279DFAD300E764C6 /* ContentView.swift */; };
 		4CFB9DC7278F89A900EFF3FE /* SixtySixAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB9DC6278F89A900EFF3FE /* SixtySixAppApp.swift */; };
-		4CFB9DC9278F89A900EFF3FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB9DC8278F89A900EFF3FE /* ContentView.swift */; };
 		4CFB9DCB278F89AB00EFF3FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CFB9DCA278F89AB00EFF3FE /* Assets.xcassets */; };
 		4CFB9DCE278F89AB00EFF3FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CFB9DCD278F89AB00EFF3FE /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C7B8B84279DFAD300E764C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4CFB9DC3278F89A900EFF3FE /* SixtySixApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SixtySixApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CFB9DC6278F89A900EFF3FE /* SixtySixAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixtySixAppApp.swift; sourceTree = "<group>"; };
-		4CFB9DC8278F89A900EFF3FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4CFB9DCA278F89AB00EFF3FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CFB9DCD278F89AB00EFF3FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,6 +32,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C7B8B77279DBB2F00E764C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C7B8B84279DFAD300E764C6 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C7B8B78279DBB4000E764C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C7B8B79279DBB4800E764C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		4CFB9DBA278F89A900EFF3FE = {
 			isa = PBXGroup;
 			children = (
@@ -52,7 +74,9 @@
 			isa = PBXGroup;
 			children = (
 				4CFB9DC6278F89A900EFF3FE /* SixtySixAppApp.swift */,
-				4CFB9DC8278F89A900EFF3FE /* ContentView.swift */,
+				4C7B8B78279DBB4000E764C6 /* Model */,
+				4C7B8B77279DBB2F00E764C6 /* Views */,
+				4C7B8B79279DBB4800E764C6 /* Resources */,
 				4CFB9DCA278F89AB00EFF3FE /* Assets.xcassets */,
 				4CFB9DCC278F89AB00EFF3FE /* Preview Content */,
 			);
@@ -137,7 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CFB9DC9278F89A900EFF3FE /* ContentView.swift in Sources */,
+				4C7B8B85279DFAD300E764C6 /* ContentView.swift in Sources */,
 				4CFB9DC7278F89A900EFF3FE /* SixtySixAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
