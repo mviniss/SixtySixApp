@@ -19,6 +19,7 @@ struct PageView: View{
     let message: String
     let imageName: String
     let startButton: Bool
+    //Essa variável @Binding é a que liga o onboarding à HomeScreen
     @Binding var onboardingAppears: Bool
     var body: some View{
         VStack{
