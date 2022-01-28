@@ -15,7 +15,9 @@ struct Habit: View {
             .navigationTitle("Meus hábitos")
             .toolbar{
                 ToolbarItemGroup(placement: .navigationBarTrailing){
-                Button("Novo hábito") {
+                    Button{
+                } label: {
+                    Label("Criar hábito", systemImage: "plus")
                     }
             }
         }
