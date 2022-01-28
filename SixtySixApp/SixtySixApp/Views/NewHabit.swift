@@ -4,7 +4,7 @@ import SwiftUI
 
 struct NewHabit: View {
     
-    @AppStorage("onboardingAppears") var onboardingAppears: Bool = true
+//    @AppStorage("onboardingAppears") var onboardingAppears: Bool = true
     
     @State var noteText: String = ""
     @State var noteTitle: String = ""
@@ -68,9 +68,8 @@ struct NewHabit: View {
             .padding()
             .navigationTitle("Novo hábito")
         }
-        .fullScreenCover(isPresented: $onboardingAppears, content: {OnboardingView(onboardingAppears: $onboardingAppears)
-              })
-        
+//        .fullScreenCover(isPresented: $onboardingAppears, content: {OnboardingView(onboardingAppears: $onboardingAppears)
+//              })
     }
     
     func saveNote(){
