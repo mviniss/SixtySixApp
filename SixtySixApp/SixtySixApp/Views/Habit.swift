@@ -7,26 +7,29 @@ struct Habit: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-                
-                    .fullScreenCover(isPresented: $onboardingAppears, content: {OnboardingView(onboardingAppears: $onboardingAppears)
+                NavigationLink(destination: NewHabit(), label: {
+                    Text("Criar novo hábito")
                 })
+                
             }
             .navigationTitle("Meus hábitos")
-            .toolbar{
-                ToolbarItemGroup(placement: .navigationBarTrailing){
-                    Button{
-                } label: {
-                    Label("Criar hábito", systemImage: "plus")
-                    }
-            }
+//            .toolbar{
+//                ToolbarItemGroup(placement: .navigationBarTrailing){
+//                    Button{
+//                    } label: {
+//                        Label("Criar hábito", systemImage: "plus")
+//                    }
+//                }
+//            }
         }
+        .fullScreenCover(isPresented: $onboardingAppears, content: {OnboardingView(onboardingAppears: $onboardingAppears)
+        })
     }
-}
-
-struct Habit_Previews: PreviewProvider {
-    static var previews: some View {
-        Habit()
+    
+    
+    struct Habit_Previews: PreviewProvider {
+        static var previews: some View {
+            Habit()
         }
     }
 }
