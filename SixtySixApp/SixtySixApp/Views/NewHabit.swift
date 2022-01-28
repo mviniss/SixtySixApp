@@ -47,28 +47,31 @@ struct NewHabit: View {
                     .background(Color.gray.opacity(0.1).cornerRadius(10))
                     .foregroundColor(.black)
                     .font(.system(size: 14, weight: .regular, design: .rounded))
+                NavigationLink(destination: CreatedHabit(), label: {
+                    Text("Concluir")
+                })
                 ForEach(noteArray, id:\.self) { data in
                     Text(data)
                 }
             }
             .padding()
             .navigationTitle("Novo hábito")
-            .toolbar{
-                ToolbarItemGroup(placement: .navigationBarTrailing){
-                    Button{
-                    } label: {
-                        Label ("Salvar", systemImage: "square.and.arrow.down")
-                            .toolbar{
-                                ToolbarItemGroup(placement: .navigationBarLeading){
-                                    Button{
-                                    } label: {
-                                        Label ("Cancelar", systemImage: "chevron.left")
-                                    }
-                                }
-                            }
-                    }
-                }
-            }
+//            .toolbar{
+//                ToolbarItemGroup(placement: .navigationBarTrailing){
+//                    Button{
+//                    } label: {
+//                        Label ("Salvar", systemImage: "square.and.arrow.down")
+//                            .toolbar{
+//                                ToolbarItemGroup(placement: .navigationBarLeading){
+//                                    Button{
+//                                    } label: {
+//                                        Label ("Cancelar", systemImage: "chevron.left")
+//                                    }
+//                                }
+//                            }
+//                    }
+//                }
+//            }
         }
     }
     
