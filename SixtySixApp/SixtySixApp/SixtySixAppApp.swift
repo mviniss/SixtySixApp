@@ -4,7 +4,7 @@ import SwiftUI
 struct SixtySixAppApp: App {
     var body: some Scene {
         WindowGroup {
-            NewHabit()
+            Habit()
         }
     }
 }
