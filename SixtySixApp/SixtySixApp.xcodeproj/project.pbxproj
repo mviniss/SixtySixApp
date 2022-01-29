@@ -11,6 +11,8 @@
 		4C228D4627A21847002AEE5E /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C228D4527A21847002AEE5E /* Onboarding.swift */; };
 		4C228D4827A21912002AEE5E /* SixtySixAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C228D4727A21912002AEE5E /* SixtySixAppApp.swift */; };
 		4C90F75427A49E3B0028EE7D /* CreatedHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C90F75327A49E3B0028EE7D /* CreatedHabit.swift */; };
+		4CC20B6027A5DE880076B5A6 /* SixtySixApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CC20B5D27A5DE880076B5A6 /* SixtySixApp.xcdatamodeld */; };
+		4CC20B6127A5DE880076B5A6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC20B5F27A5DE880076B5A6 /* Persistence.swift */; };
 		4CD1450227A4204D00E0FC35 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1450127A4204D00E0FC35 /* Habit.swift */; };
 		4CFB9DCB278F89AB00EFF3FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CFB9DCA278F89AB00EFF3FE /* Assets.xcassets */; };
 		4CFB9DCE278F89AB00EFF3FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CFB9DCD278F89AB00EFF3FE /* Preview Assets.xcassets */; };
@@ -21,6 +23,8 @@
 		4C228D4527A21847002AEE5E /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		4C228D4727A21912002AEE5E /* SixtySixAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixtySixAppApp.swift; sourceTree = "<group>"; };
 		4C90F75327A49E3B0028EE7D /* CreatedHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedHabit.swift; sourceTree = "<group>"; };
+		4CC20B5E27A5DE880076B5A6 /* SoParaPegarCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SoParaPegarCoreData.xcdatamodel; sourceTree = "<group>"; };
+		4CC20B5F27A5DE880076B5A6 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4CD1450127A4204D00E0FC35 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		4CFB9DC3278F89A900EFF3FE /* SixtySixApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SixtySixApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CFB9DCA278F89AB00EFF3FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,18 +53,21 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4C7B8B78279DBB4000E764C6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		4C7B8B79279DBB4800E764C6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4CC20B5F27A5DE880076B5A6 /* Persistence.swift */,
+				4CC20B5D27A5DE880076B5A6 /* SixtySixApp.xcdatamodeld */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4CC20B3D27A5DC4E0076B5A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			path = ../Model;
 			sourceTree = "<group>";
 		};
 		4CFB9DBA278F89A900EFF3FE = {
@@ -83,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				4C228D4727A21912002AEE5E /* SixtySixAppApp.swift */,
-				4C7B8B78279DBB4000E764C6 /* Model */,
+				4CC20B3D27A5DC4E0076B5A6 /* Model */,
 				4C7B8B77279DBB2F00E764C6 /* Views */,
 				4C7B8B79279DBB4800E764C6 /* Resources */,
 				4CFB9DCA278F89AB00EFF3FE /* Assets.xcassets */,
@@ -173,7 +180,9 @@
 				4C228D4627A21847002AEE5E /* Onboarding.swift in Sources */,
 				4C228D4427A1E478002AEE5E /* NewHabit.swift in Sources */,
 				4CD1450227A4204D00E0FC35 /* Habit.swift in Sources */,
+				4CC20B6127A5DE880076B5A6 /* Persistence.swift in Sources */,
 				4C90F75427A49E3B0028EE7D /* CreatedHabit.swift in Sources */,
+				4CC20B6027A5DE880076B5A6 /* SixtySixApp.xcdatamodeld in Sources */,
 				4C228D4827A21912002AEE5E /* SixtySixAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +388,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4CC20B5D27A5DE880076B5A6 /* SixtySixApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4CC20B5E27A5DE880076B5A6 /* SoParaPegarCoreData.xcdatamodel */,
+			);
+			currentVersion = 4CC20B5E27A5DE880076B5A6 /* SoParaPegarCoreData.xcdatamodel */;
+			path = SixtySixApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4CFB9DBB278F89A900EFF3FE /* Project object */;
 }
