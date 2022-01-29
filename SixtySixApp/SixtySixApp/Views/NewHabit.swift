@@ -4,82 +4,44 @@ import SwiftUI
 
 struct NewHabit: View {
     
-    @State var noteText: String = ""
-    @State var noteTitle: String = ""
-    @State var noteArray: [String] = []
-    @State private var startDate: Date = Date()
-    @State var setAlert: Bool = false
+    @State private var habitName = ""
+    @State private var startDate = Date()
+    @State private var notes = ""
+    @State private var noteArray: [String] = []
+    @State private var shouldSendAlert = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                TextField("Título", text: $noteTitle)
-                    .padding()
-                    .frame(width: 374, height: 60, alignment: .leading)
-                    .background(Color.gray.opacity(0.1).cornerRadius(10))
-                    .foregroundColor(.gray)
-                    .font(.system(size: 14, weight: .regular, design: .rounded))
-                
-                DatePicker("Início", selection: $startDate, in:Date()..., displayedComponents: [.date, .hourAndMinute])
-                    .padding()
-                    .frame(width: 374, height: 60, alignment: .leading)
-                    .background(Color.gray.opacity(0.1).cornerRadius(10))
-                    .foregroundColor(.black)
-                    .font(.system(size: 14, weight: .regular, design: .rounded))
-                
-                Text("Término")
-                    .padding()
-                    .frame(width: 374, height: 60, alignment: .leading)
-                    .background(Color.gray.opacity(0.1).cornerRadius(10))
-                    .foregroundColor(.black)
-                    .font(.system(size: 14, weight: .regular, design: .rounded))
-                
-                Toggle("Alerta", isOn: $setAlert)
-                    .padding()
-                    .frame(width: 374, height: 60, alignment: .leading)
-                    .background(Color.gray.opacity(0.1).cornerRadius(10))
-                    .foregroundColor(.black)
-                    .font(.system(size: 14, weight: .regular, design: .rounded))
-                
-                TextField("Notas", text: $noteText)
-                    .padding()
-                    .frame(width: 374, height: 240, alignment: .topLeading)
-                    .background(Color.gray.opacity(0.1).cornerRadius(10))
-                    .foregroundColor(.black)
-                    .font(.system(size: 14, weight: .regular, design: .rounded))
-                NavigationLink(destination: CreatedHabit(), label: {
-                    Text("Concluir")
-                })
-                ForEach(noteArray, id:\.self) { data in
-                    Text(data)
+        ZStack {
+            Spacer()
+            Form {
+                Section{
+                    TextField("Título", text: $habitName)
                 }
+                Section{
+                    DatePicker("Começa", selection: $startDate)
+                }
+                Section(header: Text("Alerta")){
+                    Toggle("Alerta", isOn: $shouldSendAlert)
+                }
+                Section{
+                    TextField("Notas", text: $notes)
+                        .frame(width: 374, height: 240, alignment: .topLeading)
+                }
+                NavigationLink(destination: CreatedHabit(), label: {
+                    Button(action: saveHabit, label: {
+                        Text("Salvar")
+                    })
+                })
             }
-            .padding()
-            .navigationTitle("Novo hábito")
-//            .toolbar{
-//                ToolbarItemGroup(placement: .navigationBarTrailing){
-//                    Button{
-//                    } label: {
-//                        Label ("Salvar", systemImage: "square.and.arrow.down")
-//                            .toolbar{
-//                                ToolbarItemGroup(placement: .navigationBarLeading){
-//                                    Button{
-//                                    } label: {
-//                                        Label ("Cancelar", systemImage: "chevron.left")
-//                                    }
-//                                }
-//                            }
-//                    }
-//                }
-//            }
+            .accentColor(Color(.label))            .navigationBarTitle("Novo hábito", displayMode: .inline)
         }
     }
-    
-    func saveNote(){
-        noteArray.append(noteTitle)
-        noteArray.append(noteText)
+    func saveHabit(){
+        noteArray.append(habitName)
+        noteArray.append(notes)
     }
 }
+
 
 struct NewHabit_Previews: PreviewProvider {
     static var previews: some View {
