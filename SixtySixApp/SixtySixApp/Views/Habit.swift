@@ -86,33 +86,35 @@ struct NewHabitScreen: View {
     @State var textFieldHabit: String = ""
     
     var body: some View {
-        ZStack {
-            Spacer()
-            Form {
-                Section{
-                    TextField("Título", text: $title)
+        NavigationView {
+            ZStack {
+                Spacer()
+                Form {
+                    Section{
+                        TextField("Título", text: $title)
+                    }
+                    Section{
+                        DatePicker("Começa", selection: $startDate)
+                    }
+                    Section{
+                        Toggle("Alerta", isOn: $shouldSendAlert)
+                            .toggleStyle(SwitchToggleStyle(tint: .blue))
+                    }
+                    Section{
+                        TextField("Notas", text: $notes)
+                            .frame(width: 374, height: 240, alignment: .topLeading)
+                    }
+                    Button(action: {
+                        guard !title.isEmpty else {return}
+                        ViewModel.addHabit(text: title)
+                        title = ""
+                        notes = ""
+                    }, label: {
+                        Text("Salvar")
+                    })
                 }
-                Section{
-                    DatePicker("Começa", selection: $startDate)
-                }
-                Section{
-                    Toggle("Alerta", isOn: $shouldSendAlert)
-                        .toggleStyle(SwitchToggleStyle(tint: .blue))
-                }
-                Section{
-                    TextField("Notas", text: $notes)
-                        .frame(width: 374, height: 240, alignment: .topLeading)
-                }
-                Button(action: {
-                    guard !title.isEmpty else {return}
-                    ViewModel.addHabit(text: title)
-                    title = ""
-                    notes = ""
-                }, label: {
-                    Text("Salvar")
-                })
+                .navigationBarTitle("Criar hábito", displayMode: .inline)
             }
-            
         }
     }
 }
