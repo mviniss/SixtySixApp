@@ -1,36 +1,128 @@
 import SwiftUI
+import CoreData
+
+class CoreDataViewModel: ObservableObject{
+    
+    let container: NSPersistentContainer
+    @Published var savedEntities: [SixtySixEntity] = []
+    
+    init() {
+        container = NSPersistentContainer(name: "SixtySixDaysCoreData")
+        container.loadPersistentStores{(description, error) in
+            if let error = error {
+                print("ERROR LOADING CORE DATA. \(error)")
+            }
+        }
+        
+        fetchHabit()
+    }
+    func fetchHabit() {
+        let request = NSFetchRequest<SixtySixEntity>(entityName: "SixtySixEntity")
+        do{
+            savedEntities = try container.viewContext.fetch(request)
+        } catch let error {
+            print("Error fetching.\(error)")
+        }
+    }
+    
+    func addHabit(text: String) {
+        let newHabit = SixtySixEntity(context: container.viewContext)
+        newHabit.name = text
+        saveData()
+    }
+    
+    func saveData() {
+        do{
+            try container.viewContext.save()
+            fetchHabit()
+        } catch let error {
+            print("Error saving. \(error)")
+        }
+    }
+}
+struct Model: Identifiable {
+    let id = UUID().uuidString
+    let title: String
+}
 
 struct Habit: View {
     
     @AppStorage("onboardingAppears") var onboardingAppears: Bool = true
     
-    let imageName: String
+    @StateObject var ViewModel = CoreDataViewModel()
+    @State var selectedModel: Model = Model(title: "STARTING TITLE")
+    @State var showSheet: Bool = false
     var body: some View {
-        NavigationView {
-                VStack {
-                    Spacer()
-                    Image(imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 414 )
-                    NavigationLink(destination: NewHabit(), label: {
-                        Text("Criar novo hábito")
-                            .bold()
-                            .frame(width: 374, height: 60, alignment: .center)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(5)
-                    })
+        VStack (spacing: 20){
+            Spacer()
+            List {
+                ForEach(ViewModel.savedEntities) { entity in
+                    Text(entity.name ?? "NO NAME")
                 }
-            .navigationTitle("Meus hábitos")
+            }
+            Button("Criar novo hábito") {
+                selectedModel = Model(title: "ONE")
+                showSheet.toggle()
+            }
+            .fullScreenCover(isPresented: $onboardingAppears, content: {OnboardingView(onboardingAppears: $onboardingAppears)
+            })
         }
-        .fullScreenCover(isPresented: $onboardingAppears, content: {OnboardingView(onboardingAppears: $onboardingAppears)
+        .sheet(isPresented: $showSheet, content: {
+            NewHabitScreen(selectedModel: $selectedModel)
         })
     }
+}
+
+struct NewHabitScreen: View {
+    @State private var title = ""
+    @State private var startDate = Date()
+    @State private var notes = ""
+    @State private var noteArray: [String] = []
+    @State private var shouldSendAlert = false
+    @Binding var selectedModel: Model
+    @StateObject var ViewModel = CoreDataViewModel()
+    @State var textFieldHabit: String = ""
     
-    struct Habit_Previews: PreviewProvider {
-        static var previews: some View {
-            Habit(imageName: "yoga")
+    var body: some View {
+        ZStack {
+            Spacer()
+            Form {
+                Section{
+                    TextField("Título", text: $title)
+                }
+                Section{
+                    DatePicker("Começa", selection: $startDate)
+                }
+                Section{
+                    Toggle("Alerta", isOn: $shouldSendAlert)
+                        .toggleStyle(SwitchToggleStyle(tint: .blue))
+                }
+                Section{
+                    TextField("Notas", text: $textFieldHabit)
+                        .frame(width: 374, height: 240, alignment: .topLeading)
+                }
+                Button(action: {
+                    guard !title.isEmpty else {return}
+                    ViewModel.addHabit(text: title)
+                    title = ""
+                }, label: {
+                    Text("Save")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(height: 55)
+                        .frame(maxWidth: .infinity)
+                        .background(Color(.blue))
+                        .cornerRadius(10)
+                })
+            }
+            
         }
     }
 }
+
+struct Habit_Previews: PreviewProvider {
+    static var previews: some View {
+        Habit()
+    }
+}
+

@@ -5,7 +5,7 @@ struct SixtySixAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Habit(imageName: "yoga")
+            Habit()
         }
     }
 }
