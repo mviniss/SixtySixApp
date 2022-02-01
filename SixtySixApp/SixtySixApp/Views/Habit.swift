@@ -2,6 +2,9 @@ import SwiftUI
 import CoreData
 import UserNotifications
 import CoreLocation
+
+//Notificações
+
 class NotificationManager {
     static let instance = NotificationManager() //singleton
     
@@ -44,6 +47,8 @@ class NotificationManager {
     }
 }
 
+//CoreData
+
 class CoreDataViewModel: ObservableObject{
     
     let container: NSPersistentContainer
@@ -84,8 +89,6 @@ class CoreDataViewModel: ObservableObject{
         saveData()
     }
     
-    
-    
     func saveData() {
         do{
             try container.viewContext.save()
@@ -95,10 +98,14 @@ class CoreDataViewModel: ObservableObject{
         }
     }
 }
+
 struct Model: Identifiable {
+    
     let id = UUID().uuidString
     let title: String
 }
+
+//Habit
 
 struct Habit: View {
     
@@ -132,7 +139,10 @@ struct Habit: View {
     }
 }
 
+//NewHabitScreen
+
 struct NewHabitScreen: View {
+    
     @State private var title = ""
     @State private var startDate = Date()
     @State private var notes = ""
@@ -141,46 +151,41 @@ struct NewHabitScreen: View {
     var ViewModel: CoreDataViewModel
     @State var textFieldHabit: String = ""
     @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         NavigationView {
             VStack {
-                    Form {
-                        Section{
-                            TextField("Título", text: $title)
-                        }
-                        Section{
-                            DatePicker("Começa", selection: $startDate)
-                        }
-                        Section{
-                            Button("Permitir notificações") {
-                                NotificationManager.instance.requestAuthorization()
-                            }
-//                            Button("Configurar notificações") {
-//                                NotificationManager.instance.scheduleNotifications()
-//                            }
-//                            Button("Cancelar notificações"){
-//                            NotificationManager.instance.cancelNotification()
-//                            }
-                        }
-                        Section{
-                            TextField("Notas", text: $notes)
-                                .frame(width: 374, height: 240, alignment: .topLeading)
-                        }
-                        Button(action: {
-                            guard !title.isEmpty else {return}
-                            ViewModel.addHabit(text: title)
-                            title = ""
-                            notes = ""
-                            dismiss()
-                        }, label: {
-                            Text("Salvar")
-                        })
+                Form {
+                    Section{
+                        TextField("Título", text: $title)
+                    }
+                    Section{
+                        DatePicker("Começa", selection: $startDate)
+                    }
+                    Section{
+                        Button("Permitir notificações") {
+                            NotificationManager.instance.requestAuthorization()
                         }
                     }
-                .onAppear{
+                    Section{
+                        TextField("Notas", text: $notes)
+                            .frame(width: 374, height: 240, alignment: .topLeading)
+                    }
+                    Button(action: {
+                        guard !title.isEmpty else {return}
+                        ViewModel.addHabit(text: title)
+                        title = ""
+                        notes = ""
+                        dismiss()
+                    }, label: {
+                        Text("Salvar")
+                    })
+                }
+            }
+            .onAppear{
                 UIApplication.shared.applicationIconBadgeNumber = 0
             }
-                .navigationBarTitle("Criar hábito", displayMode: .inline)
+            .navigationBarTitle("Criar hábito", displayMode: .inline)
         }
     }
 }
