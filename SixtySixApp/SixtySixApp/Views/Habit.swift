@@ -70,9 +70,6 @@ struct Habit: View {
             List {
                 ForEach(ViewModel.savedEntities) { entity in
                     Text(entity.title ?? "NO NAME")
-                        .onTapGesture {
-                            ViewModel.updateHabit(entity: entity)
-                        }
                 }
                 .onDelete(perform: ViewModel.deleteHabit)
             }
