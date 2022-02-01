@@ -34,6 +34,15 @@ class CoreDataViewModel: ObservableObject{
         saveData()
     }
     
+    func deleteHabit(indexSet: IndexSet){
+        guard let index = indexSet.first else {return}
+        let entity = savedEntities[index]
+        container.viewContext.delete(entity)
+        saveData()
+    }
+    
+    
+    
     func saveData() {
         do{
             try container.viewContext.save()
@@ -61,7 +70,11 @@ struct Habit: View {
             List {
                 ForEach(ViewModel.savedEntities) { entity in
                     Text(entity.title ?? "NO NAME")
+                        .onTapGesture {
+                            ViewModel.updateHabit(entity: entity)
+                        }
                 }
+                .onDelete(perform: ViewModel.deleteHabit)
             }
             Button("Criar novo hábito") {
                 selectedModel = Model(title: "ONE")
