@@ -1,7 +1,6 @@
 import SwiftUI
 
 //NewHabitScreen
-
 struct NewHabit: View {
     
     @State private var habitName = ""
@@ -20,7 +19,7 @@ struct NewHabit: View {
                     Section{
                         DatePicker("Começa", selection: $startDate)
                     }
-                    Section(header: Text("Alerta")){
+                    Section{
                         Toggle("Alerta", isOn: $shouldSendAlert)
                             .toggleStyle(SwitchToggleStyle(tint: .blue))
                     }
