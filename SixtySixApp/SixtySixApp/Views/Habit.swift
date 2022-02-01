@@ -1,5 +1,48 @@
 import SwiftUI
 import CoreData
+import UserNotifications
+import CoreLocation
+class NotificationManager {
+    static let instance = NotificationManager() //singleton
+    
+    func requestAuthorization() {
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        UNUserNotificationCenter.current().requestAuthorization(options: options) { success, error in
+            if let error = error{
+                print("ERROR:\(error)")
+            } else {
+                print("SUCCESS")
+            }
+        }
+    }
+    func scheduleNotifications() {
+        let content = UNMutableNotificationContent()
+        content.title = "This is my first notification"
+        content.subtitle = "This is so easy"
+        content.sound = .default
+        content.badge = 1
+        
+        let coordinates = CLLocationCoordinate2D (
+            latitude: 40.00, longitude: 50.00)
+        
+        let region = CLCircularRegion(center: coordinates,
+                                      radius: 100,
+                                      identifier: UUID().uuidString)
+        region.notifyOnEntry = true
+        region.notifyOnExit = false
+        let trigger = UNLocationNotificationTrigger (region: region, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString,
+                                            content: content,
+                                            trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
+    
+    func cancelNotification(){
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    }
+}
 
 class CoreDataViewModel: ObservableObject{
     
@@ -73,6 +116,9 @@ struct Habit: View {
                 }
                 .onDelete(perform: ViewModel.deleteHabit)
             }
+            .onAppear {
+                ViewModel.fetchHabit()
+            }
             Button("Criar novo hábito") {
                 selectedModel = Model(title: "ONE")
                 showSheet.toggle()
@@ -81,7 +127,7 @@ struct Habit: View {
             })
         }
         .sheet(isPresented: $showSheet, content: {
-            NewHabitScreen(selectedModel: $selectedModel)
+            NewHabitScreen(selectedModel: $selectedModel, ViewModel: ViewModel)
         })
     }
 }
@@ -92,39 +138,49 @@ struct NewHabitScreen: View {
     @State private var notes = ""
     @State private var shouldSendAlert = false
     @Binding var selectedModel: Model
-    @StateObject var ViewModel = CoreDataViewModel()
+    var ViewModel: CoreDataViewModel
     @State var textFieldHabit: String = ""
-    
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationView {
-            ZStack {
-                Spacer()
-                Form {
-                    Section{
-                        TextField("Título", text: $title)
+            VStack {
+                    Form {
+                        Section{
+                            TextField("Título", text: $title)
+                        }
+                        Section{
+                            DatePicker("Começa", selection: $startDate)
+                        }
+                        Section{
+                            Button("Permitir notificações") {
+                                NotificationManager.instance.requestAuthorization()
+                            }
+//                            Button("Configurar notificações") {
+//                                NotificationManager.instance.scheduleNotifications()
+//                            }
+//                            Button("Cancelar notificações"){
+//                            NotificationManager.instance.cancelNotification()
+//                            }
+                        }
+                        Section{
+                            TextField("Notas", text: $notes)
+                                .frame(width: 374, height: 240, alignment: .topLeading)
+                        }
+                        Button(action: {
+                            guard !title.isEmpty else {return}
+                            ViewModel.addHabit(text: title)
+                            title = ""
+                            notes = ""
+                            dismiss()
+                        }, label: {
+                            Text("Salvar")
+                        })
+                        }
                     }
-                    Section{
-                        DatePicker("Começa", selection: $startDate)
-                    }
-                    Section{
-                        Toggle("Alerta", isOn: $shouldSendAlert)
-                            .toggleStyle(SwitchToggleStyle(tint: .blue))
-                    }
-                    Section{
-                        TextField("Notas", text: $notes)
-                            .frame(width: 374, height: 240, alignment: .topLeading)
-                    }
-                    Button(action: {
-                        guard !title.isEmpty else {return}
-                        ViewModel.addHabit(text: title)
-                        title = ""
-                        notes = ""
-                    }, label: {
-                        Text("Salvar")
-                    })
-                }
-                .navigationBarTitle("Criar hábito", displayMode: .inline)
+                .onAppear{
+                UIApplication.shared.applicationIconBadgeNumber = 0
             }
+                .navigationBarTitle("Criar hábito", displayMode: .inline)
         }
     }
 }
