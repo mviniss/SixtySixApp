@@ -27,7 +27,10 @@ class CoreDataViewModel: ObservableObject{
     
     func addHabit(text: String) {
         let newHabit = SixtySixEntity(context: container.viewContext)
-        newHabit.name = text
+        newHabit.title = text
+        newHabit.notes = text
+        newHabit.shouldSendAlert = false
+        newHabit.startDate = Date()
         saveData()
     }
     
@@ -57,7 +60,7 @@ struct Habit: View {
             Spacer()
             List {
                 ForEach(ViewModel.savedEntities) { entity in
-                    Text(entity.name ?? "NO NAME")
+                    Text(entity.title ?? "NO NAME")
                 }
             }
             Button("Criar novo hábito") {
@@ -77,7 +80,6 @@ struct NewHabitScreen: View {
     @State private var title = ""
     @State private var startDate = Date()
     @State private var notes = ""
-    @State private var noteArray: [String] = []
     @State private var shouldSendAlert = false
     @Binding var selectedModel: Model
     @StateObject var ViewModel = CoreDataViewModel()
@@ -98,21 +100,16 @@ struct NewHabitScreen: View {
                         .toggleStyle(SwitchToggleStyle(tint: .blue))
                 }
                 Section{
-                    TextField("Notas", text: $textFieldHabit)
+                    TextField("Notas", text: $notes)
                         .frame(width: 374, height: 240, alignment: .topLeading)
                 }
                 Button(action: {
                     guard !title.isEmpty else {return}
                     ViewModel.addHabit(text: title)
                     title = ""
+                    notes = ""
                 }, label: {
-                    Text("Save")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color(.blue))
-                        .cornerRadius(10)
+                    Text("Salvar")
                 })
             }
             
@@ -125,4 +122,3 @@ struct Habit_Previews: PreviewProvider {
         Habit()
     }
 }
-
