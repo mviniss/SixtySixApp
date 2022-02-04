@@ -115,27 +115,29 @@ struct Habit: View {
     @State var selectedModel: Model = Model(title: "STARTING TITLE")
     @State var showSheet: Bool = false
     var body: some View {
-        VStack (spacing: 20){
-            Spacer()
-            List {
-                ForEach(ViewModel.savedEntities) { entity in
-                    Text(entity.title ?? "NO NAME")
+        NavigationView {
+            VStack (spacing: 20){
+                List {
+                    ForEach(ViewModel.savedEntities) { entity in
+                        Text(entity.title ?? "NO NAME")
+                    }
+                    .onDelete(perform: ViewModel.deleteHabit)
                 }
-                .onDelete(perform: ViewModel.deleteHabit)
+                .onAppear {
+                    ViewModel.fetchHabit()
+                }
+                Button("Criar novo hábito") {
+                    selectedModel = Model(title: "ONE")
+                    showSheet.toggle()
+                }
+                .fullScreenCover(isPresented: $onboardingAppears, content: {OnboardingView(onboardingAppears: $onboardingAppears)
+                })
             }
-            .onAppear {
-                ViewModel.fetchHabit()
-            }
-            Button("Criar novo hábito") {
-                selectedModel = Model(title: "ONE")
-                showSheet.toggle()
-            }
-            .fullScreenCover(isPresented: $onboardingAppears, content: {OnboardingView(onboardingAppears: $onboardingAppears)
+            .sheet(isPresented: $showSheet, content: {
+                NewHabitScreen(selectedModel: $selectedModel, ViewModel: ViewModel)
             })
+            .navigationTitle("Meus hábitos")
         }
-        .sheet(isPresented: $showSheet, content: {
-            NewHabitScreen(selectedModel: $selectedModel, ViewModel: ViewModel)
-        })
     }
 }
 
