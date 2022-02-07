@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4C14236527B1873A00F114A2 /* StringAndLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C14236427B1873A00F114A2 /* StringAndLocalization.swift */; };
 		4C14236927B1885300F114A2 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C14236827B1885300F114A2 /* Localization.strings */; };
+		4C14236F27B1AFC300F114A2 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C14236E27B1AFC300F114A2 /* Stickers.xcassets */; };
+		4C14237327B1AFC300F114A2 /* SixtySixAppStickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4C14236C27B1AFC200F114A2 /* SixtySixAppStickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4C228D4627A21847002AEE5E /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C228D4527A21847002AEE5E /* Onboarding.swift */; };
 		4C228D4827A21912002AEE5E /* SixtySixAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C228D4727A21912002AEE5E /* SixtySixAppApp.swift */; };
 		4C6D21E027A7586F003D5D55 /* SixtySixDaysCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D21DE27A7586F003D5D55 /* SixtySixDaysCoreData.xcdatamodeld */; };
@@ -19,9 +21,36 @@
 		4CFB9DCE278F89AB00EFF3FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CFB9DCD278F89AB00EFF3FE /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4C14237127B1AFC300F114A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CFB9DBB278F89A900EFF3FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C14236B27B1AFC200F114A2;
+			remoteInfo = SixtySixAppStickers;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4C14237727B1AFC300F114A2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4C14237327B1AFC300F114A2 /* SixtySixAppStickers.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4C14236427B1873A00F114A2 /* StringAndLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAndLocalization.swift; sourceTree = "<group>"; };
 		4C14236827B1885300F114A2 /* Localization.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localization.strings; sourceTree = "<group>"; };
+		4C14236C27B1AFC200F114A2 /* SixtySixAppStickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SixtySixAppStickers.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C14236E27B1AFC300F114A2 /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
+		4C14237027B1AFC300F114A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C228D4527A21847002AEE5E /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		4C228D4727A21912002AEE5E /* SixtySixAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixtySixAppApp.swift; sourceTree = "<group>"; };
 		4C6D21DF27A7586F003D5D55 /* SixtySixDaysCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SixtySixDaysCoreData.xcdatamodel; sourceTree = "<group>"; };
@@ -60,6 +89,15 @@
 			path = Languages;
 			sourceTree = "<group>";
 		};
+		4C14236D27B1AFC200F114A2 /* SixtySixAppStickers */ = {
+			isa = PBXGroup;
+			children = (
+				4C14236E27B1AFC300F114A2 /* Stickers.xcassets */,
+				4C14237027B1AFC300F114A2 /* Info.plist */,
+			);
+			path = SixtySixAppStickers;
+			sourceTree = "<group>";
+		};
 		4C7B8B77279DBB2F00E764C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				4CFB9DC5278F89A900EFF3FE /* SixtySixApp */,
+				4C14236D27B1AFC200F114A2 /* SixtySixAppStickers */,
 				4CFB9DC4278F89A900EFF3FE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				4CFB9DC3278F89A900EFF3FE /* SixtySixApp.app */,
+				4C14236C27B1AFC200F114A2 /* SixtySixAppStickers.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +169,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4C14236B27B1AFC200F114A2 /* SixtySixAppStickers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C14237427B1AFC300F114A2 /* Build configuration list for PBXNativeTarget "SixtySixAppStickers" */;
+			buildPhases = (
+				4C14236A27B1AFC200F114A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SixtySixAppStickers;
+			productName = SixtySixAppStickers;
+			productReference = 4C14236C27B1AFC200F114A2 /* SixtySixAppStickers.appex */;
+			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
+		};
 		4CFB9DC2278F89A900EFF3FE /* SixtySixApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CFB9DD1278F89AB00EFF3FE /* Build configuration list for PBXNativeTarget "SixtySixApp" */;
@@ -136,10 +191,12 @@
 				4CFB9DBF278F89A900EFF3FE /* Sources */,
 				4CFB9DC0278F89A900EFF3FE /* Frameworks */,
 				4CFB9DC1278F89A900EFF3FE /* Resources */,
+				4C14237727B1AFC300F114A2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4C14237227B1AFC300F114A2 /* PBXTargetDependency */,
 			);
 			name = SixtySixApp;
 			productName = SixtySixApp;
@@ -156,6 +213,9 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					4C14236B27B1AFC200F114A2 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					4CFB9DC2278F89A900EFF3FE = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -175,11 +235,20 @@
 			projectRoot = "";
 			targets = (
 				4CFB9DC2278F89A900EFF3FE /* SixtySixApp */,
+				4C14236B27B1AFC200F114A2 /* SixtySixAppStickers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4C14236A27B1AFC200F114A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C14236F27B1AFC300F114A2 /* Stickers.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CFB9DC1278F89A900EFF3FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -209,7 +278,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4C14237227B1AFC300F114A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C14236B27B1AFC200F114A2 /* SixtySixAppStickers */;
+			targetProxy = 4C14237127B1AFC300F114A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4C14237527B1AFC300F114A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 76RG2M4UVB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SixtySixAppStickers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.mvinicius.SixtySixApp.SixtySixAppStickers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C14237627B1AFC300F114A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 76RG2M4UVB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SixtySixAppStickers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = br.dev.mvinicius.SixtySixApp.SixtySixAppStickers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4CFB9DCF278F89AB00EFF3FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -391,6 +506,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4C14237427B1AFC300F114A2 /* Build configuration list for PBXNativeTarget "SixtySixAppStickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C14237527B1AFC300F114A2 /* Debug */,
+				4C14237627B1AFC300F114A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4CFB9DBE278F89A900EFF3FE /* Build configuration list for PBXProject "SixtySixApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -6,7 +6,7 @@ import CoreLocation
 //Notificações
 
 class NotificationManager {
-    static let instance = NotificationManager() //singleton
+    static let instance = NotificationManager() //Isso é um singleton
     
     func requestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
