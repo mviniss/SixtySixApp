@@ -8,9 +8,9 @@ struct OnboardingView: View {
     @Binding var onboardingAppears: Bool
     var body: some View{
         TabView {
-            PageView(message: "Segundo um estudo da professora Jane Wardle, da University College of London, o cérebro humano leva, em média, 66 dias para se acostumar a fazer algo novo.", imageName: "seeding", startButton: false, onboardingAppears: $onboardingAppears)
-            PageView(message: "Com o SixtySixApp, basta criar um novo hábito que você quer construir, escolher o dia que você quer começar (por que não hoje mesmo?) e escolher a hora do dia para ser lembrado!", imageName: "workout", startButton: false, onboardingAppears: $onboardingAppears)
-            PageView(message: "Uma dica: que tal começar um hábito que você se identifica, que te dê prazer ou que você sabe que é para o seu crescimento profissional? É mais fácil seguir em frente quando temos um propósito!", imageName: "reading", startButton: true, onboardingAppears: $onboardingAppears)
+            PageView(message: "Segundo um estudo da professora Jane Wardle, da University College of London, o cérebro humano leva, em média, 66 dias para se acostumar a fazer algo novo.".localized(), imageName: "seeding", startButton: false, onboardingAppears: $onboardingAppears)
+            PageView(message: "Com o SixtySixApp, basta criar um novo hábito que você quer construir, escolher o dia que você quer começar (por que não hoje mesmo?) e escolher a hora do dia para ser lembrado!".localized(), imageName: "workout", startButton: false, onboardingAppears: $onboardingAppears)
+            PageView(message: "Uma dica: que tal começar um hábito que você se identifica, que te dê prazer ou que você sabe que é para o seu crescimento profissional? É mais fácil seguir em frente quando temos um propósito!".localized(), imageName: "reading", startButton: true, onboardingAppears: $onboardingAppears)
         }
         .tabViewStyle(PageTabViewStyle())
     }
@@ -36,7 +36,7 @@ struct PageView: View{
                 Button(action: {
                     onboardingAppears.toggle()
                 }, label: {
-                    Text("Começar")
+                    Text("Começar".localized())
                         .bold()
                         .font(.system(size: 17))
                         .frame(width: 122, height: 44, alignment: .center)

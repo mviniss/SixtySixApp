@@ -126,7 +126,7 @@ struct Habit: View {
                 .onAppear {
                     ViewModel.fetchHabit()
                 }
-                Button("Criar novo hábito") {
+                Button("Criar novo hábito".localized()) {
                     selectedModel = Model(title: "ONE")
                     showSheet.toggle()
                 }
@@ -136,7 +136,7 @@ struct Habit: View {
             .sheet(isPresented: $showSheet, content: {
                 NewHabitScreen(selectedModel: $selectedModel, ViewModel: ViewModel)
             })
-            .navigationTitle("Meus hábitos")
+            .navigationTitle("Meus hábitos".localized())
         }
     }
 }
@@ -159,18 +159,18 @@ struct NewHabitScreen: View {
             VStack {
                 Form {
                     Section{
-                        TextField("Título", text: $title)
+                        TextField("Título".localized(), text: $title)
                     }
                     Section{
-                        DatePicker("Começa", selection: $startDate)
+                        DatePicker("Começa".localized(), selection: $startDate)
                     }
                     Section{
-                        Button("Permitir notificações") {
+                        Button("Permitir notificações".localized()) {
                             NotificationManager.instance.requestAuthorization()
                         }
                     }
                     Section{
-                        TextField("Notas", text: $notes)
+                        TextField("Notas".localized(), text: $notes)
                             .frame(width: 374, height: 240, alignment: .topLeading)
                     }
                     Button(action: {
@@ -180,14 +180,14 @@ struct NewHabitScreen: View {
                         notes = ""
                         dismiss()
                     }, label: {
-                        Text("Salvar")
+                        Text("Salvar".localized())
                     })
                 }
             }
             .onAppear{
                 UIApplication.shared.applicationIconBadgeNumber = 0
             }
-            .navigationBarTitle("Criar hábito", displayMode: .inline)
+            .navigationBarTitle("Criar hábito".localized(), displayMode: .inline)
         }
     }
 }
