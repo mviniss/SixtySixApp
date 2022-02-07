@@ -1,0 +1,35 @@
+//Onboarding: Tela 1
+
+"Segundo um estudo da professora Jane Wardle, da University College of London, o cérebro humano leva, em média, 66 dias para se acostumar a fazer algo novo." = "According to a study conducted by professor Jane Wardle, from the University College of London, the human brain takes 66 days to get used to new taks and habits";
+
+//Onboarding: Tela 2
+
+"Com o SixtySixApp, basta criar um novo hábito que você quer construir, escolher o dia que você quer começar (por que não hoje mesmo?) e escolher a hora do dia para ser lembrado!" = "With the SixtySixApp, all you need to do to create a new habit is pick up a dat to start (why not today?) and choose a time to be remind of it!";
+
+//Onboarding: Tela 3
+
+"Uma dica: que tal começar um hábito que você se identifica, que te dê prazer ou que você sabe que é para o seu crescimento profissional? É mais fácil seguir em frente quando temos um propósito!" = "A tip: what a about you start with a habit you personally are commited to, something that pleases you or something you know is for your professional development? It's easier to carry this on when you have a purpose!";
+
+//Buttons
+
+"Começar" = "Start";
+
+"Meus hábitos" = "My habits";
+
+"Criar novo hábito" = "Create new habit";
+
+//
+
+//NewHabitScreen
+
+"Título" = "Title";
+
+"Começa" = "Beginning";
+
+"Permitir notificações" = "Allow notifications";
+
+"Notas" = "Notes";
+
+"Salvar" = "Save";
+
+"Criar hábito";

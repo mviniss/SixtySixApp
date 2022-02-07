@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C14236527B1873A00F114A2 /* StringAndLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C14236427B1873A00F114A2 /* StringAndLocalization.swift */; };
+		4C14236927B1885300F114A2 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C14236827B1885300F114A2 /* Localization.strings */; };
 		4C228D4627A21847002AEE5E /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C228D4527A21847002AEE5E /* Onboarding.swift */; };
 		4C228D4827A21912002AEE5E /* SixtySixAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C228D4727A21912002AEE5E /* SixtySixAppApp.swift */; };
 		4C6D21E027A7586F003D5D55 /* SixtySixDaysCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D21DE27A7586F003D5D55 /* SixtySixDaysCoreData.xcdatamodeld */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C14236427B1873A00F114A2 /* StringAndLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringAndLocalization.swift; sourceTree = "<group>"; };
+		4C14236827B1885300F114A2 /* Localization.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localization.strings; sourceTree = "<group>"; };
 		4C228D4527A21847002AEE5E /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		4C228D4727A21912002AEE5E /* SixtySixAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixtySixAppApp.swift; sourceTree = "<group>"; };
 		4C6D21DF27A7586F003D5D55 /* SixtySixDaysCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SixtySixDaysCoreData.xcdatamodel; sourceTree = "<group>"; };
@@ -40,6 +44,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C14236627B187F800F114A2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C14236427B1873A00F114A2 /* StringAndLocalization.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C14236727B1882000F114A2 /* Languages */ = {
+			isa = PBXGroup;
+			children = (
+				4C14236827B1885300F114A2 /* Localization.strings */,
+			);
+			path = Languages;
+			sourceTree = "<group>";
+		};
 		4C7B8B77279DBB2F00E764C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				4C228D4727A21912002AEE5E /* SixtySixAppApp.swift */,
+				4C14236727B1882000F114A2 /* Languages */,
+				4C14236627B187F800F114A2 /* Extensions */,
 				4CC20B3D27A5DC4E0076B5A6 /* Model */,
 				4C7B8B77279DBB2F00E764C6 /* Views */,
 				4C7B8B79279DBB4800E764C6 /* Resources */,
@@ -145,7 +167,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				"pt-BR",
 			);
 			mainGroup = 4CFB9DBA278F89A900EFF3FE;
 			productRefGroup = 4CFB9DC4278F89A900EFF3FE /* Products */;
@@ -163,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CFB9DCE278F89AB00EFF3FE /* Preview Assets.xcassets in Resources */,
+				4C14236927B1885300F114A2 /* Localization.strings in Resources */,
 				4CFB9DCB278F89AB00EFF3FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +199,7 @@
 			files = (
 				4C228D4627A21847002AEE5E /* Onboarding.swift in Sources */,
 				4CD1450227A4204D00E0FC35 /* Habit.swift in Sources */,
+				4C14236527B1873A00F114A2 /* StringAndLocalization.swift in Sources */,
 				4CC20B6127A5DE880076B5A6 /* Persistence.swift in Sources */,
 				4CC20B6027A5DE880076B5A6 /* SixtySixApp.xcdatamodeld in Sources */,
 				4C6D21E027A7586F003D5D55 /* SixtySixDaysCoreData.xcdatamodeld in Sources */,
